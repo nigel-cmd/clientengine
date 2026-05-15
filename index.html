@@ -1,1 +1,599 @@
-<!DOCTYPE html><html><head><title>ClientEngine</title></head><body style="display:flex;justify-content:center;align-items:center;height:100vh;margin:0;font-family:sans-serif;background:#0a0a0a;color:#fff;"><div style="text-align:center;"><h1 style="font-size:3rem;margin-bottom:1rem;">ClientEngine</h1><p style="color:#888;">Client Acquisition System — Coming Soon</p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientEngine — The Client Acquisition System for Coaches & Consultants</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-blue: #0066FF;
+            --accent-cyan: #00CCFF;
+            --text-white: #ffffff;
+            --text-gray: #888888;
+            --text-light: #cccccc;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+        
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 900;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-top {
+            font-size: 0.95rem;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+        }
+        
+        .logo-bottom {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            padding: 100px 24px 80px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .eyebrow {
+            display: inline-block;
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            color: var(--accent-cyan);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 32px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subheadline {
+            font-size: 1.35rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.5;
+        }
+        
+        .hero-video {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 80px 40px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .hero-video p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            padding: 20px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.5);
+        }
+        
+        /* SECTIONS */
+        .section {
+            padding: 80px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .section-alt {
+            background: var(--bg-card);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 40px 0 16px;
+            color: var(--accent-cyan);
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .problem-box {
+            background: rgba(255, 50, 50, 0.1);
+            border-left: 4px solid #ff4444;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .solution-box {
+            background: rgba(0, 204, 255, 0.1);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .proof-box {
+            background: rgba(0, 102, 255, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+        
+        /* FEATURES GRID */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        
+        .feature-card h4 {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        /* OBJECTIONS */
+        .objection-item {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 28px;
+            margin: 20px 0;
+            border-radius: 12px;
+        }
+        
+        .objection-item h4 {
+            color: #ff6b6b;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        
+        .objection-item p {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        /* CTA SECTIONS */
+        .urgency-box {
+            background: linear-gradient(135deg, rgba(255,50,50,0.2), rgba(255,100,50,0.1));
+            border: 2px solid rgba(255,100,100,0.5);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .guarantee-box {
+            background: rgba(0, 204, 255, 0.1);
+            border: 2px solid var(--accent-cyan);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .final-cta {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            padding: 80px 24px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            color: #fff;
+        }
+        
+        .final-cta p {
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 20px 0;
+        }
+        
+        .btn-white {
+            display: inline-block;
+            background: #fff;
+            color: var(--accent-blue);
+            padding: 20px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            transition: transform 0.2s;
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* FOOTER */
+        footer {
+            background: #050508;
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subheadline { font-size: 1.1rem; }
+            h2 { font-size: 1.8rem; }
+            .nav-cta { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo-mark">
+                <div class="logo-icon">CE</div>
+                <div class="logo-text">
+                    <span class="logo-top">CLIENTENGINE</span>
+                    <span class="logo-bottom">Client Acquisition System</span>
+                </div>
+            </a>
+            <a href="#get-started" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="eyebrow">For Coaches, Consultants & Service Providers</div>
+        <h1>Stop Chasing Clients.<br>Start <span class="highlight">Converting Conversations.</span></h1>
+        <p class="hero-subheadline">The complete, done-for-you client acquisition system that generates qualified appointments in 30 days — without cold calling, without spending hours on LinkedIn, and without hoping for referrals.</p>
+        
+        <div class="hero-video">
+            <p>📹 Video Sales Letter Loading...</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">(VSL will be embedded here in Stage 5)</p>
+        </div>
+        
+        <a href="#get-started" class="hero-cta">Get ClientEngine — $697</a>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="section">
+        <h2>The Client Acquisition Trap</h2>
+        <p>You're good at what you do. You've helped clients get results. But right now, you're stuck in the feast-or-famine cycle that kills most coaching and consulting businesses.</p>
+        
+        <div class="problem-box">
+            <p><strong>Month 1:</strong> You land a client. You're busy delivering. No time for marketing.</p>
+            <p><strong>Month 2:</strong> Still delivering. Pipeline is empty. Starting to worry.</p>
+            <p><strong>Month 3:</strong> Project ends. Panic sets in. You post on LinkedIn. You email old contacts. You hope something lands.</p>
+            <p><strong>Month 4:</strong> Crickets. You consider lowering your prices. You think about getting a job.</p>
+        </div>
+        
+        <p><strong>This isn't a business. It's a roller coaster with your livelihood on the line.</strong></p>
+        
+        <p>And the advice you keep hearing? "Post more content." "Build your personal brand." "Nurture your audience."</p>
+        
+        <p>That's great for month 6. But you need clients <em>now</em>.</p>
+    </section>
+
+    <!-- THE COST -->
+    <section class="section section-alt">
+        <h2>What Inconsistent Lead Flow Is Costing You</h2>
+        <p>Let's do the math that hurts:</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>Lost Revenue</h4>
+                <p>Every month without a full pipeline costs you $10K-$50K in potential client revenue.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Time Wasted</h4>
+                <p>10+ hours/week on "marketing activities" that don't produce appointments.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Opportunity Cost</h4>
+                <p>While you chase leads, competitors with systems are booking your ideal clients.</p>
+            </div>
+            <div class="feature-card">
+                <h4>Mental Drain</h4>
+                <p>The anxiety of not knowing where your next client is coming from.</p>
+            </div>
+        </div>
+        
+        <p>The worst part? You're not failing because you're bad at delivery. You're failing because you don't have a <strong>system</strong> for acquisition.</p>
+    </section>
+
+    <!-- THE SOLUTION -->
+    <section class="section">
+        <h2>Introducing ClientEngine</h2>
+        <p>ClientEngine isn't another course. It's not a template pack. It's not "here's what worked for me, good luck."</p>
+        
+        <div class="solution-box">
+            <p><strong>ClientEngine is a complete, done-for-you client acquisition system — built specifically for your business, deployed in 30 days, and designed to run without you.</strong></p>
+        </div>
+        
+        <p>Here's what happens when you have ClientEngine:</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>🎯 Precision Targeting</h4>
+                <p>We identify your exact ideal clients — where they are, what they care about, and how to reach them.</p>
+            </div>
+            <div class="feature-card">
+                <h4>📧 Outreach That Converts</h4>
+                <p>Custom message sequences that start conversations, not spam folders.</p>
+            </div>
+            <div class="feature-card">
+                <h4>🔄 Automated Follow-Up</h4>
+                <p>7-touch nurture sequences that work while you sleep. No leads fall through cracks.</p>
+            </div>
+            <div class="feature-card">
+                <h4>📅 Appointment Booking</h4>
+                <p>Qualified prospects book directly on your calendar. You just show up and close.</p>
+            </div>
+            <div class="feature-card">
+                <h4>📊 Complete Visibility</h4>
+                <p>Know exactly where every prospect stands. Data-driven decisions, not guesses.</p>
+            </div>
+            <div class="feature-card">
+                <h4>⚡ 30-Day Implementation</h4>
+                <p>From zero to live system in 30 days. Not 90. Not 6 months. 30 days.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section section-alt">
+        <h2>The 30-Day Engine Build</h2>
+        <p>We don't hand you software and wish you luck. We build your entire acquisition infrastructure — then hand you the keys.</p>
+        
+        <h3>Week 1: Foundation</h3>
+        <p>We map your ideal client profile with surgical precision. Who are they? Where do they congregate? What pain keeps them up at night? We build your targeting blueprint.</p>
+        
+        <h3>Week 2: System Architecture</h3>
+        <p>We construct your outreach sequences — every email, every LinkedIn message, every follow-up touch. Each one written in your voice, designed to start conversations.</p>
+        
+        <h3>Week 3: Automation & Launch</h3>
+        <p>We connect your CRM, set up your automation, and launch your first campaigns. Your engine starts running.</p>
+        
+        <h3>Week 4: Optimization</h3>
+        <p>We analyze what's working, double down on winners, and hand you a system that's already producing appointments.</p>
+        
+        <div class="proof-box">
+            <p><strong>By day 30:</strong> You have a complete client acquisition system. It's running. It's generating conversations. And you didn't have to build it yourself.</p>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="section">
+        <h2>What's Included</h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h4>✓ Ideal Client Research</h4>
+                <p>Complete targeting blueprint for your exact market</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ Outreach Sequences</h4>
+                <p>Custom email & LinkedIn templates that convert</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ 7-Touch Follow-Up System</h4>
+                <p>Automated nurture sequences (no leads lost)</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ CRM Setup & Configuration</h4>
+                <p>Fully built pipeline tracking system</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ Appointment Booking Integration</h4>
+                <p>Qualified prospects book directly on your calendar</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ Sales Call Scripts</h4>
+                <p>Conversion-optimized scripts for your discovery calls</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ 30 Days of Support</h4>
+                <p>Direct access for questions and optimization</p>
+            </div>
+            <div class="feature-card">
+                <h4>✓ Performance Dashboard</h4>
+                <p>Real-time visibility into your pipeline</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJECTIONS -->
+    <section class="section section-alt">
+        <h2>Questions You Might Have</h2>
+        
+        <div class="objection-item">
+            <h4>"Will this actually work for my specific business?"</h4>
+            <p>We've built this for coaches, consultants, agencies, and service providers across dozens of niches. The principles of client acquisition are universal. The system is customized to your specific market, offer, and voice.</p>
+        </div>
+        
+        <div class="objection-item">
+            <h4>"I'm not technical. Will I be able to use this?"</h4>
+            <p>You don't need to be. We build everything. You get a dashboard and a calendar. If something needs changing, you tell us and we handle it. This is truly done-for-you.</p>
+        </div>
+        
+        <div class="objection-item">
+            <h4>"What if I don't have a big audience or list?"</h4>
+            <p>Perfect. This system is designed for outbound acquisition — finding and starting conversations with ideal clients who don't know you yet. No audience required.</p>
+        </div>
+        
+        <div class="objection-item">
+            <h4>"$697 is a lot. Is it worth it?"</h4>
+            <p>One client at your current rate pays for this system. The real question: what's the cost of staying stuck in the feast-or-famine cycle for another 6 months?</p>
+        </div>
+        
+        <div class="objection-item">
+            <h4>"What if it doesn't work?"</h4>
+            <p>We have a 30-day guarantee. If your system isn't live and generating conversations within 30 days, you get a full refund. We're taking the risk because we know this works.</p>
+        </div>
+    </section>
+
+    <!-- URGENCY -->
+    <section class="section">
+        <div class="urgency-box">
+            <h3 style="color: #ff6b6b; margin-bottom: 16px;">Founder Pricing Ends Soon</h3>
+            <p>We're currently accepting a limited number of clients at $697. As we add more case studies and refine the system, the price will increase.</p>
+            <p style="margin-top: 20px; font-size: 1.2rem;"><strong>Lock in founder pricing now and keep this rate forever.</strong></p>
+        </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section class="section section-alt">
+        <div class="guarantee-box">
+            <h3 style="color: var(--accent-cyan); margin-bottom: 16px;">Our 30-Day "System Working" Guarantee</h3>
+            <p>If your client acquisition system isn't live and generating conversations within 30 days of us starting, you don't pay. If you're not seeing qualified appointments within 60 days, cancel for a full refund.</p>
+            <p style="margin-top: 20px;">We're taking all the risk because we know this works.</p>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta" id="get-started">
+        <h2>Stop Hoping for Clients.<br>Start Engineering Them.</h2>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 20px auto;">Get ClientEngine. Build your acquisition system. Book qualified appointments in 30 days.</p>
+        <div class="price-tag">$697</div>
+        <p style="opacity: 0.9; margin-bottom: 30px;">One-time payment • 30-day guarantee • Lifetime access</p>
+        <a href="#checkout" class="btn-white">Get ClientEngine Now</a>
+        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">🔒 Secure checkout • 30-day money-back guarantee</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 ClientEngine by True Products Network LLC</p>
+        <p style="margin-top: 8px;">Chesterfield, Missouri</p>
+    </footer>
+</body>
+</html>
