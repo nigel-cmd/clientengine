@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientEngine Member Area</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-blue: #0066FF;
+            --accent-cyan: #00CCFF;
+            --text-white: #ffffff;
+            --text-gray: #888888;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+        
+        /* NAV */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 16px 24px;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 900;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-top {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: #fff;
+        }
+        
+        .logo-bottom {
+            font-size: 0.6rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-white);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+        
+        /* PROGRESS */
+        .progress-section {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+            height: 100%;
+            width: 25%;
+            border-radius: 4px;
+        }
+        
+        /* MODULES */
+        .section-title {
+            font-size: 1.2rem;
+            margin: 30px 0 16px;
+            color: var(--accent-cyan);
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            color: var(--text-white);
+            transition: all 0.2s;
+        }
+        
+        .module-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+        
+        .module-card.locked {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .module-number {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .module-status {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(0, 200, 83, 0.2);
+            color: #00C853;
+        }
+        
+        .module-status.pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: #FFC107;
+        }
+        
+        .module-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        
+        .module-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        /* TOOLS */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+        
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        
+        .tool-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        
+        .tool-card p {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+        
+        /* SUPPORT */
+        .support-box {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo-mark">
+                <div class="logo-icon">CE</div>
+                <div class="logo-text">
+                    <span class="logo-top">CLIENTENGINE</span>
+                    <span class="logo-bottom">Member Area</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="#modules">Modules</a>
+                <a href="#tools">Tools</a>
+                <a href="#support">Support</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Your ClientEngine system build is in progress.</p>
+        
+        <div class="progress-section">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>System Build Progress</span>
+                <span style="color: var(--accent-cyan); font-weight: 600;">Week 1 of 4</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p style="color: var(--text-gray); font-size: 0.9rem; margin-top: 12px;">Current: Foundation & Research Phase</p>
+        </div>
+        
+        <h2 class="section-title" id="modules">Program Modules</h2>
+        <div class="modules-grid">
+            <a href="#" class="module-card">
+                <div class="module-header">
+                    <div class="module-number">1</div>
+                    <span class="module-status">Active</span>
+                </div>
+                <h3>Foundation & Research</h3>
+                <p>Ideal client profiling and market research</p>
+            </a>
+            
+            <a href="#" class="module-card locked">
+                <div class="module-header">
+                    <div class="module-number">2</div>
+                    <span class="module-status pending">Locked</span>
+                </div>
+                <h3>System Architecture</h3>
+                <p>Outreach sequences and automation setup</p>
+            </a>
+            
+            <a href="#" class="module-card locked">
+                <div class="module-header">
+                    <div class="module-number">3</div>
+                    <span class="module-status pending">Locked</span>
+                </div>
+                <h3>Launch & Campaigns</h3>
+                <p>First outreach campaigns go live</p>
+            </a>
+            
+            <a href="#" class="module-card locked">
+                <div class="module-header">
+                    <div class="module-number">4</div>
+                    <span class="module-status pending">Locked</span>
+                </div>
+                <h3>Optimization & Scale</h3>
+                <p>Analyze results and scale winners</p>
+            </a>
+        </div>
+        
+        <h2 class="section-title" id="tools">Your Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <h4>📊 Dashboard</h4>
+                <p>View your metrics</p>
+            </div>
+            <div class="tool-card">
+                <h4>📧 Templates</h4>
+                <p>Access your sequences</p>
+            </div>
+            <div class="tool-card">
+                <h4>📅 Calendar</h4>
+                <p>Booked appointments</p>
+            </div>
+            <div class="tool-card">
+                <h4>📋 Questionnaire</h4>
+                <p>Complete onboarding</p>
+            </div>
+        </div>
+        
+        <div class="support-box" id="support">
+            <h3>Need Help?</h3>
+            <p style="color: var(--text-gray); margin: 8px 0;">Our team is here to support you throughout your 30-day build.</p>
+            <a href="mailto:trueprodai@agentmail.to" class="btn-primary">Contact Support</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to ClientEngine — Thank You</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-blue: #0066FF;
+            --accent-cyan: #00CCFF;
+            --text-white: #ffffff;
+            --text-gray: #888888;
+            --success-green: #00C853;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 200, 83, 0.2);
+            border: 1px solid var(--success-green);
+            color: var(--success-green);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+        }
+        
+        .video-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .video-box p {
+            color: var(--text-gray);
+        }
+        
+        .next-steps {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .next-steps h3 {
+            color: var(--accent-cyan);
+            margin-bottom: 20px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            margin-bottom: 4px;
+        }
+        
+        .step-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+        
+        .module-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--text-white);
+            transition: border-color 0.2s;
+        }
+        
+        .module-card:hover {
+            border-color: var(--accent-blue);
+        }
+        
+        .module-card h4 {
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .module-card p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        .support-box {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            padding: 24px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-badge">
+            ✅ Purchase Confirmed
+        </div>
+        
+        <h1>Welcome to ClientEngine</h1>
+        <p class="subtitle">Your client acquisition system build starts now.</p>
+        
+        <div class="video-box">
+            <p>📹 Welcome Video Loading...</p>
+            <p style="font-size: 0.9rem; margin-top: 10px;">(Record your welcome video and send me the Vimeo/YouTube ID)</p>
+        </div>
+        
+        <div class="next-steps">
+            <h3>What Happens Next</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Check Your Email</h4>
+                    <p>You'll receive a welcome email with your onboarding questionnaire within 5 minutes.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Complete the Questionnaire</h4>
+                    <p>Tell us about your ideal client, your offer, and your current situation. (Takes 10 minutes)</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>We Build Your System</h4>
+                    <p>Our team builds your complete client acquisition system over the next 30 days.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Go Live & Start Booking</h4>
+                    <p>Your system launches. Qualified prospects start booking calls on your calendar.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h3>Your 30-Day Program</h3>
+        <div class="modules-grid">
+            <a href="#" class="module-card">
+                <h4>Week 1: Foundation</h4>
+                <p>Ideal client research & targeting</p>
+            </a>
+            <a href="#" class="module-card">
+                <h4>Week 2: System Build</h4>
+                <p>Outreach sequences & automation</p>
+            </a>
+            <a href="#" class="module-card">
+                <h4>Week 3: Launch</h4>
+                <p>First campaigns go live</p>
+            </a>
+            <a href="#" class="module-card">
+                <h4>Week 4: Optimize</h4>
+                <p>Scale what works</p>
+            </a>
+        </div>
+        
+        <div class="support-box">
+            <h3>Questions? We're Here.</h3>
+            <p style="color: var(--text-gray); margin: 10px 0;">Reply to your welcome email or reach out anytime.</p>
+            <a href="mailto:trueprodai@agentmail.to" class="btn-primary">Contact Support</a>
+        </div>
+    </div>
+</body>
+</html>
