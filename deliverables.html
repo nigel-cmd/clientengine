@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClientEngine - Your Deliverables</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --accent-blue: #0066FF;
+            --accent-cyan: #00CCFF;
+            --text-white: #ffffff;
+            --text-gray: #888888;
+            --success-green: #00C853;
+            --bonus-gold: #FFD700;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+        }
+        
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 16px 24px;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-mark {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 900;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-top {
+            font-size: 0.9rem;
+            font-weight: 900;
+            color: #fff;
+        }
+        
+        .logo-bottom {
+            font-size: 0.6rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: var(--text-gray);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .value-box {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,204,255,0.1));
+            border: 1px solid rgba(0,204,255,0.3);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .value-box .total-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+        }
+        
+        .value-box .your-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success-green);
+            margin-top: 8px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin: 40px 0 20px;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title .badge {
+            background: var(--accent-blue);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        
+        .deliverables-grid {
+            display: grid;
+            gap: 16px;
+        }
+        
+        .deliverable-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .deliverable-number {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        
+        .deliverable-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .deliverable-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+        
+        .deliverable-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+        }
+        
+        .meta-item {
+            color: var(--accent-cyan);
+        }
+        
+        .bonus-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,215,0,0.05));
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        
+        .bonus-card .deliverable-number {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+        }
+        
+        .bonus-badge {
+            background: var(--bonus-gold);
+            color: #000;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .value-tag {
+            color: var(--bonus-gold);
+            font-weight: 600;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .cta-section h2 {
+            margin-bottom: 16px;
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 24px;
+        }
+        
+        .btn-white {
+            display: inline-block;
+            background: #fff;
+            color: var(--accent-blue);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        
+        footer {
+            background: #050508;
+            padding: 40px 24px;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo-mark">
+                <div class="logo-icon">CE</div>
+                <div class="logo-text">
+                    <span class="logo-top">CLIENTENGINE</span>
+                    <span class="logo-bottom">Client Acquisition System</span>
+                </div>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h1>Everything You Get With ClientEngine</h1>
+        <p class="subtitle">A complete client acquisition system built for you in 30 days</p>
+        
+        <div class="value-box">
+            <div class="total-value">Total Value: $2,176</div>
+            <div class="your-price">Your Investment: $697</div>
+            <p style="color: var(--text-gray); margin-top: 8px;">You save $1,479 (68% off)</p>
+        </div>
+        
+        <h2 class="section-title">
+            Core Deliverables
+            <span class="badge">8 Items</span>
+        </h2>
+        
+        <div class="deliverables-grid">
+            <div class="deliverable-card">
+                <div class="deliverable-number">1</div>
+                <div class="deliverable-content">
+                    <h3>Ideal Client Research Blueprint</h3>
+                    <p>Complete targeting profile for your exact market. We identify who they are, where they congregate, what pain keeps them up at night, and how to reach them.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📄 PDF Guide</span>
+                        <span class="meta-item">🎥 Video Training</span>
+                        <span class="meta-item">💰 Value: $297</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">2</div>
+                <div class="deliverable-content">
+                    <h3>Outreach Sequence Library</h3>
+                    <p>Custom email and LinkedIn templates written in your voice. Every message designed to start conversations, not get ignored. Includes first-touch, follow-up, and breakup sequences.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📧 Email Templates</span>
+                        <span class="meta-item">💬 LinkedIn Scripts</span>
+                        <span class="meta-item">💰 Value: $397</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">3</div>
+                <div class="deliverable-content">
+                    <h3>7-Touch Follow-Up System</h3>
+                    <p>Complete automation workflow that nurtures leads from first contact to booked call. No lead falls through the cracks. Works while you sleep.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">⚡ Automation Map</span>
+                        <span class="meta-item">🔄 Workflow Templates</span>
+                        <span class="meta-item">💰 Value: $297</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">4</div>
+                <div class="deliverable-content">
+                    <h3>CRM Setup & Configuration</h3>
+                    <p>Fully built pipeline tracking system customized for your business. Know exactly where every prospect stands at a glance. Integrated with your outreach and follow-up.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">🔧 Tech Setup</span>
+                        <span class="meta-item">📊 Dashboard</span>
+                        <span class="meta-item">💰 Value: $197</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">5</div>
+                <div class="deliverable-content">
+                    <h3>Appointment Booking Integration</h3>
+                    <p>Your calendar connected to qualified prospects. They book directly. No back-and-forth. No scheduling headaches. Just show up and close.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📅 Calendar Setup</span>
+                        <span class="meta-item">🔗 Booking Page</span>
+                        <span class="meta-item">💰 Value: $147</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">6</div>
+                <div class="deliverable-content">
+                    <h3>Sales Call Scripts</h3>
+                    <p>Conversion-optimized discovery call framework. Know exactly what to say, when to say it, and how to move prospects to "yes." Includes objection handling.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📝 Call Scripts</span>
+                        <span class="meta-item">🎭 Role Play Videos</span>
+                        <span class="meta-item">💰 Value: $197</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">7</div>
+                <div class="deliverable-content">
+                    <h3>Performance Dashboard</h3>
+                    <p>Real-time visibility into your entire pipeline. Track outreach, responses, appointments, and conversions. Data-driven decisions, not guesses.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📈 Live Dashboard</span>
+                        <span class="meta-item">📊 Weekly Reports</span>
+                        <span class="meta-item">💰 Value: $147</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card">
+                <div class="deliverable-number">8</div>
+                <div class="deliverable-content">
+                    <h3>30-Day Implementation Guide</h3>
+                    <p>Week-by-week video training showing exactly what happens when. Know what to expect, when to expect it, and how to maximize your results.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">🎥 Video Course</span>
+                        <span class="meta-item">📋 Checklists</span>
+                        <span class="meta-item">💰 Value: $297</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">
+            Fast-Action Bonuses
+            <span class="badge" style="background: var(--bonus-gold); color: #000;">5 Bonuses</span>
+        </h2>
+        
+        <div class="deliverables-grid">
+            <div class="deliverable-card bonus-card">
+                <div class="deliverable-number">B1</div>
+                <div class="deliverable-content">
+                    <span class="bonus-badge">BONUS #1</span>
+                    <h3>The Decision-Maker Database</h3>
+                    <p>500+ verified contacts in your target market. Skip the research. Start with prospects who can actually buy.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📊 Contact List</span>
+                        <span class="value-tag">💰 Value: $297</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card bonus-card">
+                <div class="deliverable-number">B2</div>
+                <div class="deliverable-content">
+                    <span class="bonus-badge">BONUS #2</span>
+                    <h3>Objection Handling Scripts</h3>
+                    <p>Responses to every common sales objection. "I need to think about it." "It's too expensive." "Not right now." Handle them all with confidence.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📝 Response Scripts</span>
+                        <span class="value-tag">💰 Value: $197</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card bonus-card">
+                <div class="deliverable-number">B3</div>
+                <div class="deliverable-content">
+                    <span class="bonus-badge">BONUS #3</span>
+                    <h3>Proposal Template Pack</h3>
+                    <p>Winning proposal templates that close deals. Structure, pricing psychology, and delivery methods that convert proposals into signed contracts.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📄 Templates</span>
+                        <span class="value-tag">💰 Value: $147</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card bonus-card">
+                <div class="deliverable-number">B4</div>
+                <div class="deliverable-content">
+                    <span class="bonus-badge">BONUS #4</span>
+                    <h3>Referral System Blueprint</h3>
+                    <p>Turn clients into referral sources. Systematic approach to generating high-quality referrals without awkward asks.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">📋 System Map</span>
+                        <span class="value-tag">💰 Value: $197</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="deliverable-card bonus-card">
+                <div class="deliverable-number">B5</div>
+                <div class="deliverable-content">
+                    <span class="bonus-badge">BONUS #5</span>
+                    <h3>90-Day Scale Plan</h3>
+                    <p>What to do after your system is live. How to scale, optimize, and build on your success. The roadmap to 10x.</p>
+                    <div class="deliverable-meta">
+                        <span class="meta-item">🗺️ Strategic Plan</span>
+                        <span class="value-tag">💰 Value: $297</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>Ready to Build Your Client Engine?</h2>
+            <p>Get instant access to everything above. Your 30-day system build starts immediately.</p>
+            <a href="#checkout" class="btn-white">Get Started - $697</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2026 ClientEngine by True Products Network LLC</p>
+        <p>30-Day Money-Back Guarantee • Secure Checkout</p>
+    </footer>
+</body>
+</html>
